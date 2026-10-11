@@ -1,0 +1,6 @@
+condition,description,trainable_params,total_params,lr,epochs_run,best_epoch,training_time_sec,best_val_loss,best_val_acc,test_acc,test_f1_macro
+B1_scratch,"ResNet-18 dari nol (weights=None), tanpa augmentasi",11181642,11181642,{'all_params': 0.001},9,4,56.1,1.9598,0.2533,0.2133,0.1881
+B2_feature_extraction,"Freeze backbone, latih classifier head saja, tanpa augmentasi",5130,11181642,{'fc': 0.001},31,26,164.0,0.2152,0.92,0.9533,0.9532
+B3_finetune,"Unfreeze layer4 + fc, differential LR, tanpa augmentasi",8398858,11181642,"{'layer4': 0.0001, 'fc': 0.001}",28,23,166.7,0.0854,0.9733,0.96,0.96
+B4_finetune_aug,B3 + augmentasi aktif pada train set,8398858,11181642,"{'layer4': 0.0001, 'fc': 0.001}",19,14,147.6,0.1056,0.9667,0.9533,0.9523
+B5_efficientnet_b0,"EfficientNet-B0: unfreeze 2 blok akhir + classifier, differential LR",1142202,4020358,"{'features[-2:]': 0.0001, 'classifier': 0.001}",19,14,149.0,0.1221,0.96,0.94,0.9399

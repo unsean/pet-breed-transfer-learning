@@ -1,0 +1,85 @@
+{
+  "B1_scratch": {
+    "condition": "B1_scratch",
+    "description": "ResNet-18 dari nol (weights=None), tanpa augmentasi",
+    "trainable_params": 11181642,
+    "total_params": 11181642,
+    "lr": {
+      "all_params": 0.001
+    },
+    "epochs_run": 9,
+    "best_epoch": 4,
+    "training_time_sec": 56.1,
+    "best_val_loss": 1.9598,
+    "best_val_acc": 0.2533,
+    "test_acc": 0.2133,
+    "test_f1_macro": 0.1881
+  },
+  "B2_feature_extraction": {
+    "condition": "B2_feature_extraction",
+    "description": "Freeze backbone, latih classifier head saja, tanpa augmentasi",
+    "trainable_params": 5130,
+    "total_params": 11181642,
+    "lr": {
+      "fc": 0.001
+    },
+    "epochs_run": 31,
+    "best_epoch": 26,
+    "training_time_sec": 164.0,
+    "best_val_loss": 0.2152,
+    "best_val_acc": 0.92,
+    "test_acc": 0.9533,
+    "test_f1_macro": 0.9532
+  },
+  "B3_finetune": {
+    "condition": "B3_finetune",
+    "description": "Unfreeze layer4 + fc, differential LR, tanpa augmentasi",
+    "trainable_params": 8398858,
+    "total_params": 11181642,
+    "lr": {
+      "layer4": 0.0001,
+      "fc": 0.001
+    },
+    "epochs_run": 28,
+    "best_epoch": 23,
+    "training_time_sec": 166.7,
+    "best_val_loss": 0.0854,
+    "best_val_acc": 0.9733,
+    "test_acc": 0.96,
+    "test_f1_macro": 0.96
+  },
+  "B4_finetune_aug": {
+    "condition": "B4_finetune_aug",
+    "description": "B3 + augmentasi aktif pada train set",
+    "trainable_params": 8398858,
+    "total_params": 11181642,
+    "lr": {
+      "layer4": 0.0001,
+      "fc": 0.001
+    },
+    "epochs_run": 19,
+    "best_epoch": 14,
+    "training_time_sec": 147.6,
+    "best_val_loss": 0.1056,
+    "best_val_acc": 0.9667,
+    "test_acc": 0.9533,
+    "test_f1_macro": 0.9523
+  },
+  "B5_efficientnet_b0": {
+    "condition": "B5_efficientnet_b0",
+    "description": "EfficientNet-B0: unfreeze 2 blok akhir + classifier, differential LR",
+    "trainable_params": 1142202,
+    "total_params": 4020358,
+    "lr": {
+      "features[-2:]": 0.0001,
+      "classifier": 0.001
+    },
+    "epochs_run": 19,
+    "best_epoch": 14,
+    "training_time_sec": 149.0,
+    "best_val_loss": 0.1221,
+    "best_val_acc": 0.96,
+    "test_acc": 0.94,
+    "test_f1_macro": 0.9399
+  }
+}

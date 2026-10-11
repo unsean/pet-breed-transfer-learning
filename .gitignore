@@ -1,0 +1,5 @@
+*.pt
+*.zip
+oxford-iiit-pet/
+data/
+__pycache__/
